@@ -1,0 +1,47 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="Eng">
+<head>
+<title>My Pages</title>  
+</head>
+<body>
+    
+<center><b><h1>Login - Page</h1></b></center>
+<hr>
+<br>
+	{% if msg %}
+		<center><b style="color: blue;">{{msg}}</b></center>
+		<br>
+	{% endif %}
+
+<center>
+	<form method="POST" action="{% url 'login' %}">
+		{% csrf_token %}
+		<table>
+			<tr>
+				<tr>
+					<td>Email : </td>
+					<td><input type="text" name="email"></td>
+				</tr>
+				<tr>
+					<td>Password : </td>
+					<td><input type="text" name="password"></td>
+				</tr>				
+			</tr>
+				<td colspan="2" align="center"> <input type="submit" value="SUBMIT"> </td>
+		</table>
+	</form>
+</center>
+
+</body>
+
+</html>
+<script>
+{% if alert %}
+alert("Username or Password is incorrect.");
+document.location = "/login"
+{% endif %}
+</script>
+{% endblock %}

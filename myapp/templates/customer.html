@@ -1,0 +1,31 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+<table class="table table-striped">
+	<center><h3> Customer Deatils </h3></center>
+	  <thead>
+
+	    <tr>
+	      <th scope="col">Customer name</th>
+	      <th scope="col">Mobile Number</th>
+	      <th scope="col">Email</th>
+	      <th scope="col">Addressh</th>
+		  <th scope="col">Quot</th>
+	    </tr>
+	 </thead>
+    <tbody>
+
+	    <tr>
+	    	{% for i in contact %}
+	      <th scope="row">{{i.fname}}</th>
+	      <td>{{i.mobile}}</td>
+	      <td>{{i.email}}</td>
+	      <td>{{i.address}}</td>
+			<td><a class="btn btn-primary" href="{% url 'quot' pk=i.pk %}">Make Quot</a></td>
+	      </td>
+	    </tr>
+	    {% endfor %}
+	</tbody>
+</table>
+{% endblock %}

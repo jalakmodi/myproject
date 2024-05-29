@@ -1,0 +1,68 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="Eng">
+<head>
+<title>My Pages</title>  
+</head>
+<body>
+    
+<center><b><h1>Sign -- Up -- Pages</h1></b></center>
+<hr>
+<br>
+	{% if msg %}
+		<center><b style="color: blue;">{{msg}}</b></center>
+		<br>
+	{% endif %}
+
+<center>
+	<form method="post" action="{% url 'sign-up' %}">
+		{% csrf_token %}
+		<table>
+			<tr>
+				<tr>
+					<td>Name : </td>
+					<td><input type="text" name="name"></td>
+				</tr>
+				
+				<tr>
+					<td>Mobile Number : </td>
+					<td><input type="text" name="mobile"></td>
+				</tr>
+				<tr>
+					<td>Email : </td>
+					<td><input type="text" name="email"></td>
+				</tr>
+				<tr>
+					<td>Password : </td>
+					<td><input type="text" name="password"></td>
+				</tr>
+				<tr>
+					<td>Conform Password : </td>
+					<td><input type="text" name="cpassword"></td>
+				</tr>
+				<tr>
+					<td>Address : </td>
+					<td><textarea rows="5" cols="22" name="address"></textarea></td>
+				</tr>
+				<tr>
+					<td>Profile Image : </td>
+					<td><input type="file" name="profile_picture" class="u-full-width bg-light"></td>
+				</tr>
+			</tr>
+				<td colspan="2" align="center"> <input type="submit" value="SUBMIT"> </td>
+		</table>
+	</form>
+</center>
+
+</body>
+
+</html>
+<script>
+{% if alert %}
+alert("Your Conform Password And Password Dose Not Match Please Try Again.");
+document.location = "/sign-up"
+{% endif %}
+</script>
+{% endblock %}

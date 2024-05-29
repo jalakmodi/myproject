@@ -1,0 +1,57 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="Eng">
+<head>
+<title>My Pages</title>  
+</head>
+<body>
+    
+<center><b><h2>Add Product</h2></b></center>
+<hr>
+<br>
+	{% if msg %}
+		<center><b style="color: blue;">{{msg}}</b></center>
+		<br>
+	{% endif %}
+
+<center>
+	<form method="post" action="{% url 'add_product' %}">
+		{% csrf_token %}
+		<table>
+			<tr>
+				<tr>
+					<td>Product Name : </td>
+					<td><input type="text" name="proname"></td>
+				</tr>
+				<tr>
+					<td>Product type : </td>
+					<td><input type="text" name="protype"></td>
+				</tr>
+				<tr>
+					<td>Qty : </td>
+					<td><input type="text" name="qty"></td>
+				</tr>
+				<tr>
+					<td>Price : </td>
+					<td><input type="text" name="price"></td>
+				</tr>				
+				<tr>
+					<td>Product Detail : </td>
+					<td><textarea rows="5" cols="22" name="prodetail"></textarea></td>
+				</tr>
+				<tr>
+					<td>Product Image : </td>
+					<td><input type="file" name="pro_picture" class="u-full-width bg-light"></td>
+				</tr>
+			</tr>
+				<td colspan="2" align="center"> <input type="submit" value="SUBMIT"> </td>
+		</table>
+	</form>
+</center>
+
+</body>
+
+</html>
+{% endblock %}

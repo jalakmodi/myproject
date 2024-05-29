@@ -1,0 +1,45 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+	<html lang="Eng">
+	<head>
+	<title>My Pages</title>
+	</head>
+	<body>
+
+	<center><b><h2>Edit Product</h2></b></center>
+	<hr>
+	<br>
+		{% if msg %}
+			<center><b style="color: blue;">{{msg}}</b></center>
+			<br>
+		{% endif %}
+
+	<center>
+		<form method="post" action="{% url 'edit_product' pk=product.pk %}">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<tr>
+						<td>Product Name : </td>
+						<td><input type="text" name="proname" value="{{product.proname}}"></td>
+					</tr>
+					<tr>
+						<td>Product type : </td>
+						<td><input type="text" name="protype" value="{{product.protype}}"></td>
+					</tr>
+					<tr>
+						<td>Price : </td>
+						<td><input type="text" name="price" value="{{product.price}}"></td>
+					</tr>
+				</tr>
+					<td colspan="2" align="center"> <input type="submit" value="Update Product"> </td>
+			</table>
+		</form>
+	</center>
+
+	</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid row">
+    <div class="col-lg-12">
+        <div class="box-element">
+            <a href="{% url 'massage' %}" class="btn btn-outline-dark">&#x2190 Refresh</a>
+            <br><br>
+            
+            	<table class="table">
+            	{% for i in contact %}
+                <tr>
+                    <tr>
+                    <td>Sn:</td>
+					<td><input type="text" value={{i.id}}></td>
+
+					<td>Name:</td>
+					<td><input type="text" value={{i.fname}}></td>
+				
+				
+					<td>Mobile: </td>
+					<td><input type="text" value="{{i.mobile}}"></td>
+				
+				
+					<td>Email: </td>
+					<td><input type="text" value="{{i.email}}"></td>
+				
+				
+					<td>Address: </td>
+					<td><textarea rows="2" cols="30" name="address">{{i.address}}</textarea></td>
+				
+				
+					<td>Message: </td>
+					<td><textarea rows="2" cols="30" name="message">{{i.message}}</textarea></td>
+				</tr>
+				{% endfor %}
+             </tr>
+           </table>
+        </div>
+
+       		
+        </div>
+    </div>
+</div>
+{% endblock %}

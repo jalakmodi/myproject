@@ -1,0 +1,57 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="Eng">
+<head>
+<title>My Pages</title>  
+</head>
+<body>
+    
+<center><b><h2>Home Pages Contact</h2></b></center>
+<hr>
+<br>
+	{% if msg %}
+		<center><b style="color: blue;">{{msg}}</b></center>
+		<br>
+	{% endif %}
+
+<center>
+	<form method="post" action="{% url 'contact' %}">
+		{% csrf_token %}
+		<table>
+			<tr>
+				<tr>
+					<td>First Name : </td>
+					<td><input type="text" name="fname"></td>
+				</tr>
+				<tr>
+					<td>Last Name : </td>
+					<td><input type="text" name="lname"></td>
+				</tr>
+				<tr>
+					<td>Mobile Number : </td>
+					<td><input type="text" name="mobile"></td>
+				</tr>
+				<tr>
+					<td>Email : </td>
+					<td><input type="text" name="email"></td>
+				</tr>
+				<tr>
+					<td>Address : </td>
+					<td><textarea rows="5" cols="22" name="address"></textarea></td>
+				</tr>
+				<tr>
+					<td>Your Message : </td>
+					<td><textarea rows="5" cols="22" name="message"></textarea></td>
+				</tr>
+			</tr>
+				<td colspan="2" align="center"> <input type="submit" value="SUBMIT"> </td>
+		</table>
+	</form>
+</center>
+
+</body>
+
+</html>
+{% endblock %}

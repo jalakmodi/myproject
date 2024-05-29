@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    tr,td{
+
+      border:2px solid black; padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Modi Jalak</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+      {% if request.session.email %}
+      <li><a href="{% url 'add_product' %}">Add Product</a>
+      <li><a href="{% url 'show_product' %}">Show Product</a>
+      <li><a href="{% url 'customer' %}">Customer</a>
+      <li><a href="#">Quototion</a>
+      {% endif %}
+    </ul>
+
+    {% if request.session.email %}
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span> Logout ( {{request.session.email}} )</a></li>
+      <li><a href="{% url 'profile' %}" class="item-anchor"><img src="{{request.session.profile_picture}}" style="width:50px;height: 50px;"></a></li>
+      <li><a href="{% url 'change_password' %}"><span class="glyphicon glyphicon-log-in"></span> Change Password</a></li>
+    </ul>
+    {% else %}
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="{% url 'sign-up' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+    {% endif %}
+  </div>
+</nav>
+{% block content %}
+{% endblock %}
+</body>
+</html>

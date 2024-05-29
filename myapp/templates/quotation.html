@@ -1,0 +1,52 @@
+ {% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<table class="table table-striped">
+	<center><h3> Customer Deatils </h3></center>
+	  <thead>
+	    <tr>
+	      <th scope="col">Customer name</th>
+	      <th scope="col">Mobile Number</th>
+	      <th scope="col">Email</th>
+	      <th scope="col">Addressh</th>
+	    </tr>
+	 </thead>
+    <tbody>
+	    <tr>
+	      <th scope="row">{{contact.fname}}</th>
+	      <td>{{contact.mobile}}</td>
+	      <td>{{contact.email}}</td>
+	      <td>{{contact.address}}</td>
+	</tbody>	
+</table>
+
+<table class="table table-striped">
+	<center><h3> Product Quotation </h3></center>
+	  <thead>
+	    <tr>
+	      <th scope="col">Select Product</th>
+	      <th scope="col">Product Qty </th>
+	      <th scope="col">Price </th>
+	      <th scope="col">Total </th>
+	    </tr>
+	 </thead>
+
+
+    <tbody>
+	    <tr>
+			{% for i in products %}
+			<td>{{i.proname}}</td>
+	      <td><input type="text" name="qty"></td>
+	      <td>{{i.price}}</td>
+	      <td>{{i.total}}</td>
+	</tbody>
+	{% endfor %}
+	<tr>
+	      <td scope="col" align="right"> Total Amount</tr>
+	      <tr><td scope="col" align="right"> Discount</td></tr>
+	      <tr> <td scope="col" align="right"> Gst</td></tr>
+	      <td scope="col" align="right"> Total </td>
+	</tr>
+</table>
+		<center><a class="btn btn-primary" href="#">Make A Quot</a></center>
+{% endblock %}
